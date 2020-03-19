@@ -6,7 +6,7 @@ import testspercountrywebscraper
 
 t1 = Timeloop()
 
-@t1.job(interval=timedelta(seconds=1))
+@t1.job(interval=timedelta(seconds=60))
 def run():
     print("execute")
     testspercountrywebscraper.scrape()
