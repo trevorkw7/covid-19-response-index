@@ -1,16 +1,12 @@
-import time
-from timeloop import Timeloop
-from datetime import timedelta
+from apscheduler.schedulers.blocking import BlockingScheduler
 import parsedata
 import testspercountrywebscraper
 
-t1 = Timeloop()
+sched = BlockingScheduler()
 
-@t1.job(interval=timedelta(seconds=60))
+@sched.scheduled_job('interval', seconds=3)
 def run():
     print("execute")
     testspercountrywebscraper.scrape()
     parsedata.parse()
-
-if __name__ == "__main__":
-    t1.start(block=True)
+sched.start()
