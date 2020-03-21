@@ -48,3 +48,5 @@ def scrape():
         })
     print(compiled_data)
     compiled_data.to_json('compiled_data_ourworld.json')
+
+scrape()

@@ -19,13 +19,16 @@ def parse():
     tests_list = list(tests_dict.values())
 
 
-
-
-    #convert tests list into integers
+    #convert tests list into integers: N/A is converted to -1
     i=0
     while(i < len(tests_list)):
-        tests_list[i] = int(tests_list[i].replace(',',''))
+        tests_list[i] = tests_list[i].replace(',','')
+        if(tests_list[i].isdigit()):
+            tests_list[i] = int(tests_list[i])
+        else:
+            tests_list[i] = -1
         i+=1
+
 
     ISO_3_list = coco.convert(names = countries_list, to = 'ISO3')
 
@@ -33,11 +36,11 @@ def parse():
     mapper = country(from_key='iso3', to_key='population')
     population_list = []
 
-    #remove duplicate canada entries
+    #remove local data points
     index = 0
     length = len(countries_list)
     while(index < length):
-        if ("Canada –" in countries_list[index]):
+        if ("–" in countries_list[index]):
             countries_list.remove(countries_list[index])
             ISO_3_list.remove(ISO_3_list[index])
             tests_list.remove(tests_list[index])
@@ -53,18 +56,18 @@ def parse():
 
 
     #fix duplicates - add tests in same country together
-
-    l=0
-    m=1
-    length = len(ISO_3_list)
-    while (m < length):
-        if(ISO_3_list[l] == ISO_3_list[m]):
-            total = tests_list[l] + tests_list[m]
-            tests_list[l] = total
-            tests_list[m] = total
-            length -= 1
-        l += 1
-        m += 1
+    #
+    # l=0
+    # m=1
+    # length = len(ISO_3_list)
+    # while (m < length):
+    #     if(ISO_3_list[l] == ISO_3_list[m]):
+    #         total = tests_list[l] + tests_list[m]
+    #         tests_list[l] = total
+    #         tests_list[m] = total
+    #         length -= 1
+    #     l += 1
+    #     m += 1
 
     #create tests per million list
     k=0
@@ -72,19 +75,19 @@ def parse():
         tpc_list.append(tests_list[k]/population_list[k] * 1000000)
         k+=1
 
-    #fix duplicates - remove diplicate entries
-    n=0
-    o=1
-    length = len(ISO_3_list)
-    while (o < length):
-        if(ISO_3_list[n] == ISO_3_list[o]):
-            del ISO_3_list[n]
-            del population_list[n]
-            del tests_list[n]
-            del tpc_list[n]
-            length -= 1
-        n += 1
-        o += 1
+    # #fix duplicates - remove diplicate entries
+    # n=0
+    # o=1
+    # length = len(ISO_3_list)
+    # while (o < length):
+    #     if(ISO_3_list[n] == ISO_3_list[o]):
+    #         del ISO_3_list[n]
+    #         del population_list[n]
+    #         del tests_list[n]
+    #         del tpc_list[n]
+    #         length -= 1
+    #     n += 1
+    #     o += 1
 
     compiled_data = pd.DataFrame(
         {
