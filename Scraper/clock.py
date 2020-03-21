@@ -4,7 +4,7 @@ import testspercountrywebscraper
 
 sched = BlockingScheduler()
 
-@sched.scheduled_job('interval', seconds=3)
+@sched.scheduled_job('interval', seconds=10)
 def run():
     print("execute")
     testspercountrywebscraper.scrape()

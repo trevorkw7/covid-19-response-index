@@ -1,0 +1,3 @@
+[console_scripts]
+coco = country_converter.country_converter:main
+
