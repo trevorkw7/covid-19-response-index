@@ -8,7 +8,7 @@ def parse():
     tpc_list = []
 
     #combining locations into an array
-    with open('compiled_data_ourworld.json') as f:
+    with open('./Scraper/Data/compiled_data_ourworld.json') as f:
         our_world_data = json.load(f)
 
     countries_dict = our_world_data['location']
@@ -98,4 +98,4 @@ def parse():
         })
 
     print(compiled_data)
-    compiled_data.to_json('parsed_data.json')
+    compiled_data.to_json('./Scraper/Data/parsed_data.json')
