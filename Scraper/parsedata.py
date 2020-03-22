@@ -156,8 +156,6 @@ def parse_hopkins(file_name):
         #substring includes the date and time of the file
         compiled_data.to_json('./Scraper/Data/parsed_data_' + file_name[29:])
 
-
-
 #file1 should have earlier data than file2
 def calculate_growth(file1, file2):
     with open(file1) as f:
