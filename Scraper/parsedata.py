@@ -99,3 +99,76 @@ def parse():
 
     print(compiled_data)
     compiled_data.to_json('./parsed_data.json')
+    
+def parse_hopkins(file_name):
+
+        with open(file_name) as f:
+            hopkins_data = json.load(f)
+
+        #contains other (numbered) dictionaries that contain the info
+        hopkins_data_dict = hopkins_data['data']
+
+        #data lists
+        countries_list = []
+        confirmed_list = []
+        deaths_list = []
+        recovered_list = []
+
+        #add info to the corresponding lists
+        for i in range(0, len(hopkins_data_dict)):
+            countries_list.append(hopkins_data_dict[str(i)]['location'])
+            confirmed_list.append(hopkins_data_dict[str(i)]['confirmed'])
+            deaths_list.append(hopkins_data_dict[str(i)]['deaths'])
+            recovered_list.append(hopkins_data_dict[str(i)]['recovered'])
+
+        ISO_3_list = coco.convert(names = countries_list, to = 'ISO3')
+
+        compiled_data = pd.DataFrame(
+            {
+                "location_code": ISO_3_list,
+                "confirmed_cases": confirmed_list,
+                "deaths": deaths_list,
+                "recovered": recovered_list,
+                "dt": file_name[37:-5]
+            })
+
+        print(compiled_data)
+        #substring includes the date and time of the file
+        compiled_data.to_json('./Scraper/Data/parsed_data_' + file_name[29:])
+
+#file1 should have earlier data than file2
+def calculate_growth(file1, file2):
+    with open(file1) as f:
+        data_json_1 = json.load(f)
+
+    with open(file2) as f:
+        data_json_2 = json.load(f)
+
+    locations_list = []
+    recovered_growth_list = []
+    confirmed_growth_list = []
+    deaths_growth_list = []
+
+    countries_dict = data_json_1["location_code"]
+    locations_list = list(countries_dict.values())
+
+    for i in range(0, len(locations_list)):
+        recovered_growth = int(data_json_1["recovered"][str(i)]) - int(data_json_2["recovered"][str(i)])
+        recovered_growth_list.append(recovered_growth)
+
+        confirmed_growth = int(data_json_1["confirmed_cases"][str(i)]) - int(data_json_2["confirmed_cases"][str(i)])
+        confirmed_growth_list.append(confirmed_growth)
+
+        deaths_growth = int(data_json_1["deaths"][str(i)]) - int(data_json_2["deaths"][str(i)])
+        deaths_growth_list.append(deaths_growth)
+
+    compiled_growth_data = pd.DataFrame(
+    {
+        "location_code": locations_list,
+        "recovered_growth": recovered_growth_list,
+        "confirmed_cases_growth": confirmed_growth_list,
+        "deaths_growth": deaths_growth_list
+    })
+
+    print(compiled_growth_data)
+    compiled_growth_data.to_json('./Scraper/Data/growth_data.json')
