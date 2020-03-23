@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "covid-19-testing-data",
+  "private_key_id": "49ad8f7af21f94c806fddf2051ae10a73ef0bb0a",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC8BZFGaJJSKjZQ\nmf0uuduXFp0nHhEEQd6qSzh4FM4+w5CwNzsGSGbPHRw5A/eeGI416C7+cWEjuDAK\ntBgPMViiunqJoI14kSa9qf/pVDM8yoieZf+/h2VO8ERU7NOe/WKY+avgHPxKjl/+\ndAW7q2UAiCGSGwP0iprksEKSVhm36jGg80aB1LvzK4S6/xVBG8AYGjMRIemttqc9\nITJRai+a7N0gzRjeUEF7cohmudtHdlS/5HLlZkysKoHzGGrQjMy0MMT3c5ciAMoo\nC6Adn47P+ynk+lcwTXOo2S0tI2o3tzYWqz3H6FUAAKLLihBvOnS/4/ksJX6Lwdxg\nuK8cbwEPAgMBAAECggEADeI3wuQbR3lTfAP3t8Wq/kI1H4hvIQo/uwGfIIrUwe2A\nV4Ra71DuuoUMd1wgiQPu+FipPUoGlMC+JDdkZJ00GmwJR8FbWoqvuo1jie/l13hs\nulmPMK4URoE9latl/JVhFilItKqFqXgchLY961Vk7QAGwcdATwRItL6CylOuRkmJ\nD/VEi/ggsuyECfNAHRmI0E4GoPZ6JWSJmvc7Z8jSj8li4LOb4YkmzMDrMfBGrsDL\nBLS2pgy/8eTz9G56XDIxzDzo+dyoKl7pHsVkAM/EqGSa8frbv4+spGO0hsref2vi\nzMbdh8PfBKngjf3aZrMsNHF/tKJw/GXgQ0tnJ+FsPQKBgQDmHUXFpCDV3dAsQxB/\nywCgLUeBj2Mp1DS8qqPdOG0GLGmm8LiYluztoZ/6lh9doie0Ez4Rlf8Au+KOZdCN\n4XGTxENHWGfQyZr4yP102hL+TI95dOwOaKdotqq8d+0PU3YNp1+PxoiAjAf+rk+y\nOYJ6ZcoEgyZ6H84loWzDerHFOwKBgQDRLCGwF+enGQLuHUm7mYk1lUgCJ169h2bl\nHN0ttQ27qHDnoFh6kY1oZEmtaLxFkejwZn9MwqhDf6ly++jBEUr4cIcXTZwTFLU3\nXSfZHsunqMUpoKpliQ+oaSQSK4Yc+6XaNTfjrSLOGmf5USDDwnNS4+Pvy/4RvA42\nsXm9bKDmPQKBgFiA7bLkO1TGKSi86n2cIDN69sOX2HXgDiB6KOgOqa/0KPZyIy1c\n7uc+gH8qegnTMh4KQJcW76rimHJYKmxHRx2kIJQyJkuhHp+M/h6ROTjhTVVTaO7p\nxWl6yBQQs/ZvDTqXIyPzIdD/CpwjgrdzcwGMYLR3lLbnwKuseF5+tBy9AoGAJaYf\n2iYzV+w0js9OuimEfNSFxX14m/yHFK4BUXzJIAHNcKN3yXfxT9zdNg0n9g2xM7P/\nLb3Ls3qC8WNOHZITQGxgpF0fvn93rqNhzL6yQVcrRbbZdLUa0GE8UNjspsLUs1Xo\n3V4IabhvBn0HvLR/NWg3Wq4I6QBEPqvrEaE/xLECgYEAwyhilB+yLKC487HtrkHr\nbylnelMW/CTfZWXeKe7XwNeqi+/um/8YXpK4rbddFoI+paLBXfvU0zqxfJIsVJyT\nHotyCxJUEzpzlQ1/tDyNnzvK1CATaV140Lv7GUP9jOhPOSurE3jEYWwv4Er0QFs5\nOssR3Ct2TEnVQb4Pzvbf6U0=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-nxv47@covid-19-testing-data.iam.gserviceaccount.com",
+  "client_id": "112995728198286253914",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-nxv47%40covid-19-testing-data.iam.gserviceaccount.com"
+}

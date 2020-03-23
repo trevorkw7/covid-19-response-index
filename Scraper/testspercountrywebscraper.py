@@ -47,4 +47,4 @@ def scrape():
             "dt": date
         })
     print(compiled_data)
-    compiled_data.to_json('./compiled_data_ourworld.json')
+    compiled_data.to_json('compiled_data_ourworld.json')

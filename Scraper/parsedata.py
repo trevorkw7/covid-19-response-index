@@ -2,6 +2,19 @@ import pandas as pd
 import country_converter as coco
 import json
 from geonamescache.mappers import country
+import pyrebase
+
+#config firebase for script storage
+config = {
+    "apiKey": "AIzaSyB8nEOJTUEo2UAvMkGcL2PKPmBNj28Se2I",
+    "authDomain": "covid-19-testing-data.firebaseapp.com",
+    "databaseURL": "https://covid-19-testing-data.firebaseio.com",
+    "storageBucket": "covid-19-testing-data.appspot.com",
+    "serviceAccount": "service.json"
+}
+# print(open("service.json", "r").read())
+firebase = pyrebase.initialize_app(config)
+storage = firebase.storage()
 
 def parse():
 
@@ -79,7 +92,7 @@ def parse():
     #create tests per million list
     k=0
     while(k < len(tests_list)):
-        tpc_list.append(tests_list[k]/population_list[k] * 1000000)
+        tpc_list.append(round(tests_list[k]/population_list[k] * 1000000))
         k+=1
 
     # #fix duplicates - remove diplicate entries
@@ -99,7 +112,7 @@ def parse():
     #create lattitude and longitude list
     location_lat=[]
     location_long=[]
-    with open('./countrycode-latlong.json') as g:
+    with open('countrycode-latlong.json') as g:
         lat_long_data = json.load(g)
 
     for iso2_code in ISO_2_list:
@@ -109,6 +122,7 @@ def parse():
     #create dataframe and export
     compiled_data = pd.DataFrame(
         {
+            "location": countries_list,
             "location_code": ISO_3_list,
             "location_lat": location_lat,
             "location_long": location_long,
@@ -119,6 +133,8 @@ def parse():
 
     print(compiled_data)
     compiled_data.to_json('./our_world_parsed.json', orient='records')
+    storage.child('/')
+    storage.child('our_world_parsed.json').put('./our_world_parsed.json')
 
 def parse_hopkins(file_name):
 
