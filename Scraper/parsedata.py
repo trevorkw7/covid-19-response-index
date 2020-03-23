@@ -20,7 +20,7 @@ def parse():
 
 
     #combining locations into an array
-    with open('./compiled_data_ourworld.json') as f:
+    with open('compiled_data_ourworld.json') as f:
         our_world_data = json.load(f)
 
     countries_dict = our_world_data['location']
