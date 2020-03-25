@@ -1,1 +1,2 @@
-Scraper/project_env/
+/project_env/
+/__pycache__/

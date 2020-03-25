@@ -10,14 +10,14 @@ def scrape():
     page = requests.get(url)
     soup = BeautifulSoup(page.content, "html.parser")
 
-    date_paragraphs = soup.find("div", class_ = "wp-block-column")
-    data_paragraph = ""
-    for paragraph in date_paragraphs:
-        if(paragraph.get_text().find("we could find as of")):
-            data_paragraph = paragraph
-
-    date = paragraph.find("strong").get_text()
-    date = date[date.index("f") + 2 : date.index(",")]
+    # date_paragraphs = soup.find("div", class_ = "wp-block-column")
+    # data_paragraph = ""
+    # for paragraph in date_paragraphs:
+    #     if(paragraph.get_text().find("we could find as of")):
+    #         data_paragraph = paragraph
+    #
+    # date = paragraph.find("strong").get_text()
+    # date = date[date.index("f") + 2 : date.index(",")]
 
     #table on website
     testingTable = soup.find("div", class_ = "tableContainer")
@@ -31,14 +31,17 @@ def scrape():
     countriesAndTests = []
     countries = []
     tests = []
+    date = []
 
     #first cell containing country name
     for item in itemsList:
         countries.append(item.find('td').get_text())
-    index = 0
     #second cell via list returned containing tests
     for item in itemsList:
         tests.append(item.find_all("td")[1].get_text())
+    #third cell via items list
+    for item  in itemsList:
+        date.append(item.find_all("td")[2].get_text())
 
     compiled_data = pd.DataFrame(
         {

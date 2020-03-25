@@ -6,11 +6,11 @@ import pyrebase
 
 #config firebase for script storage
 config = {
-    "apiKey": "AIzaSyB8nEOJTUEo2UAvMkGcL2PKPmBNj28Se2I",
-    "authDomain": "covid-19-testing-data.firebaseapp.com",
-    "databaseURL": "https://covid-19-testing-data.firebaseio.com",
-    "storageBucket": "covid-19-testing-data.appspot.com",
-    "serviceAccount": "service.json"
+    "apiKey": "APIKEY",
+    "authDomain": "AUTHDOMAIN",
+    "databaseURL": "DATABASEURL",
+    "storageBucket": "STORAGEBUCKET",
+    "serviceAccount": "SERVICE.JSON"
 }
 # print(open("service.json", "r").read())
 firebase = pyrebase.initialize_app(config)
@@ -25,11 +25,12 @@ def parse():
 
     countries_dict = our_world_data['location']
     tests_dict = our_world_data['tests']
+    date_dict = our_world_data['dt']
 
     #zeros in on values in dictionary
     countries_list = list(countries_dict.values())
     tests_list = list(tests_dict.values())
-
+    date_list = list(date_dict.values())
 
     #convert tests list into integers: N/A is converted to -1
     i=0
@@ -53,7 +54,7 @@ def parse():
     mapper = country(from_key='iso3', to_key='population')
     population_list = []
 
-    #remove local data points
+    #remove local data points or countries with no aggregate figures (-1)
     index = 0
     length = len(countries_list)
     while(index < length):
@@ -62,6 +63,20 @@ def parse():
             ISO_3_list.remove(ISO_3_list[index])
             ISO_2_list.remove(ISO_2_list[index])
             tests_list.remove(tests_list[index])
+            date_list.remove(date_list[index])
+            length = length - 1
+            continue
+        index += 1
+
+    index = 0
+    length = len(tests_list)
+    while(index < length):
+        if (tests_list[index] == -1):
+            countries_list.remove(countries_list[index])
+            ISO_3_list.remove(ISO_3_list[index])
+            ISO_2_list.remove(ISO_2_list[index])
+            tests_list.remove(tests_list[index])
+            date_list.remove(date_list[index])
             length = length - 1
             continue
         index += 1
@@ -119,6 +134,7 @@ def parse():
         location_lat.append(lat_long_data[iso2_code]["lat"])
         location_long.append(lat_long_data[iso2_code]["long"])
 
+
     #create dataframe and export
     compiled_data = pd.DataFrame(
         {
@@ -128,7 +144,8 @@ def parse():
             "location_long": location_long,
             "location_pop": population_list,
             "tests": tests_list,
-            "tests_per_million": tpc_list
+            "tests_per_million": tpc_list,
+            "date": date_list
         })
 
     print(compiled_data)
