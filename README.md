@@ -5,3 +5,4 @@ Current Functionality: Scrapes from John Hopkins and Our World in Data databases
 
 # Website
 Testing counts and tests per million are displayed on: https://www.covidresponse.live/
+<img src="./Website-Images/webscreen.png" height="400px" />
