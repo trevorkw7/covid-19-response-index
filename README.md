@@ -4,6 +4,7 @@ Web scraper that takes in data from John Hopkins and Our World in Data databases
 Current Functionality: Scrapes from John Hopkins and Our World in Data databases for testing, life, death, recovery, and infection rates. Data is parsed to calculate tests per million per capita. 
 
 # Website
-Testing counts and tests per million are displayed on: https://www.covidresponse.live/. 
+Due to sensitive API keys, the front end repository is private at this time. 
+<p>Testing counts and tests per million are displayed on: https://www.covidresponse.live/.</p>
 <img src= "./Website-Images/webscreen.PNG" height="400px" />
-This front end repository will remain private at this time.
+
